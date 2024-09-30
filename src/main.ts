@@ -1,5 +1,8 @@
-import { createApp } from "vue";
-import "./style.css";
+import { createApp, type App as VueApp } from "vue";
+import { router } from "@/router";
 import App from "./App.vue";
+import "@/styles/main.scss";
 
-createApp(App).mount("#app");
+const app: VueApp<Element> = createApp(App);
+app.use(router);
+app.mount("body");

@@ -1,0 +1,19 @@
+﻿@use "sass:list";
+
+/// Returns a range of numbers as a list.
+///
+/// @param {number} $from
+///   The start of the range.
+/// @param {number} $to
+///   The end of the range.
+/// @param {number} $step
+///   The increment to use in the range.
+/// @returns {list} The list of numbers in the range.
+@function range($from, $to, $step: 1) {
+  $list: [];
+  @while $from <= $to {
+    $list: list.append($list, $from);
+    $from: $from + $step;
+  }
+  @return $list;
+}

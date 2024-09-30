@@ -1,0 +1,8 @@
+﻿@use "mixins";
+@use "variables";
+
+:root {
+  @each $name, $color in variables.$colors {
+    @include mixins.weighted-color-props($name, $color);
+  }
+}

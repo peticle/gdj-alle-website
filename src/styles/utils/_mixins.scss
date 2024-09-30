@@ -1,0 +1,35 @@
+﻿@use "sass:list";
+@use "sass:math";
+@use "functions";
+@use "variables";
+
+/// Finds the weighted versions of a color
+///
+/// @param {string} $color
+///   The color to find the weighted versions of.
+@mixin weighted-color($color) {
+  $weights: functions.range(100, 900, 100);
+  $length: list.length($weights);
+
+  @for $i from 1 through $length {
+    $weight: list.nth($weights, $i);
+    $factor: ($weight - 500) / 100;
+    @if $factor < 0 {
+      @content ($weight, darken($color, variables.$colors--interval * math.abs($factor)));
+    } @else {
+      @content ($weight, lighten($color, variables.$colors--interval * $factor));
+    }
+  }
+}
+
+/// Finds the custom properties of the weighted versions of a color.
+///
+/// @param {string} $name
+///   The name for the custom properties.
+/// @param {string} $color
+///   The color to find the custom properties of.
+@mixin weighted-color-props($name, $color) {
+  @include weighted-color($color) using ($weight, $color) {
+    --#{$name}-#{$weight}: #{$color};
+  }
+}

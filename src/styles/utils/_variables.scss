@@ -1,0 +1,12 @@
+﻿@use "../themes/default";
+
+$colors--interval: 7.6%;
+$colors: () !default;
+$colors: map-merge(
+  (
+    "primary": default.$color--primary,
+    "white": default.$color--white,
+    "black": default.$color--black,
+  ),
+  $colors
+);
