@@ -13,7 +13,7 @@
 
   @for $i from 1 through $length {
     $weight: list.nth($weights, $i);
-    $factor: ($weight - 500) / 100;
+    $factor: math.div($weight - 500, 100);
     @if $factor < 0 {
       @content ($weight, darken($color, variables.$colors--interval * math.abs($factor)));
     } @else {

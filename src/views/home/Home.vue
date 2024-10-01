@@ -72,12 +72,12 @@ onMounted(() => {
       <Crow />
     </Suspense>
     <svg
-      id="background"
+      id="home-background"
       viewBox="0 0 200 100"
       preserveAspectRatio="xMidYMax slice"
     >
       <defs>
-        <mask id="hole">
+        <mask id="home-mask">
           <ellipse cx="100" cy="100" rx="120" ry="60" fill="white" />
           <circle cx="100" cy="100" r="12" fill="black" />
           <text ref="title-bg">
@@ -95,13 +95,13 @@ onMounted(() => {
         </radialGradient>
       </defs>
       <rect x="0" y="0" width="200" height="100" fill="url(#home-gradient)" />
-      <rect x="0" y="0" width="200" height="100" mask="url(#hole)" />
+      <rect x="0" y="0" width="200" height="100" mask="url(#home-mask)" />
       <text ref="subtitle">
         <tspan x="100" y="70">Jeunesse jurassienne</tspan>
         <tspan x="100" y="73.5">depuis 2009</tspan>
       </text>
     </svg>
-    <a id="scroll" href="#">
+    <a id="home-scroll" href="#">
       <svg ref="scroll" viewBox="0 0 26.46 26.46">
         <path
           fill="none"
@@ -116,12 +116,13 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-section#home {
+#home {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: 100dvh;
   position: relative;
+  transition: height 0.1s;
 
   > h2,
   p {
@@ -130,6 +131,7 @@ section#home {
 
   &:deep(> div.crow) {
     height: 45dvh;
+    transition: height 0.2s;
     width: 100%;
 
     > canvas {
@@ -137,68 +139,68 @@ section#home {
       width: 100%;
     }
   }
+}
 
-  > svg#background {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -1;
+#home-background {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 
-    > defs {
-      > mask#hole > text {
-        opacity: 0;
-        text-anchor: middle;
-        font-family: "Bebas Neue", arial, sans-serif;
-        font-size: 0.46em;
-        letter-spacing: 0.04em;
-
-        &:last-of-type {
-          fill: none;
-          stroke: black;
-          stroke-width: 0.03em;
-          stroke-linejoin: round;
-          stroke-linecap: round;
-          stroke-dashoffset: 30;
-          stroke-dasharray: 30;
-        }
-      }
-
-      > #home-gradient > stop {
-        &:first-of-type {
-          stop-color: var(--primary-500);
-        }
-        &:last-of-type {
-          stop-color: var(--primary-600);
-        }
-      }
-    }
-
-    > rect:nth-of-type(2) {
-      fill: var(--white-500);
-    }
-
-    > text {
-      fill: var(--black-600);
-      font-family: "Roboto", arial, sans-serif;
-      font-size: 0.18em;
-      font-weight: 300;
+  > defs {
+    > mask#home-mask > text {
       opacity: 0;
       text-anchor: middle;
+      font-family: "Bebas Neue", arial, sans-serif;
+      font-size: 0.46em;
+      letter-spacing: 0.04em;
+
+      &:last-of-type {
+        fill: none;
+        stroke: black;
+        stroke-width: 0.03em;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        stroke-dashoffset: 30;
+        stroke-dasharray: 30;
+      }
+    }
+
+    > #home-gradient > stop {
+      &:first-of-type {
+        stop-color: var(--primary-500);
+      }
+      &:last-of-type {
+        stop-color: var(--primary-600);
+      }
     }
   }
 
-  > a#scroll {
-    bottom: 0.4rem;
-    position: absolute;
-    width: 4em;
+  > rect:nth-of-type(2) {
+    fill: var(--white-500);
+  }
 
-    > svg {
-      opacity: 0;
-      stroke: var(--white-500);
-      stroke-dashoffset: 25;
-      stroke-dasharray: 25;
-    }
+  > text {
+    fill: var(--black-600);
+    font-family: "Roboto", arial, sans-serif;
+    font-size: 0.18em;
+    font-weight: 300;
+    opacity: 0;
+    text-anchor: middle;
+  }
+}
+
+#home-scroll {
+  bottom: 0.4rem;
+  position: absolute;
+  width: 4em;
+
+  > svg {
+    opacity: 0;
+    stroke: var(--white-500);
+    stroke-dashoffset: 25;
+    stroke-dasharray: 25;
   }
 }
 </style>
