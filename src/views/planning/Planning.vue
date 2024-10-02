@@ -22,8 +22,8 @@ onMounted(() => {
 
 <template>
   <section id="planning">
-    <h2>Agenda</h2>
-    <ul v-if="events.length > 0">
+    <h2 class="section-title">Agenda</h2>
+    <ul v-if="events.length > 0" class="no-style-list">
       <li v-for="(event, i) in events" :key="i">
         <Event :data="event" />
       </li>
@@ -37,19 +37,14 @@ onMounted(() => {
   background: var(--white-500);
   padding: 2em;
 
-  > h2 {
-    font-family: "Bebas Neue", arial, sans-serif;
-    font-size: 3.2em;
-    letter-spacing: 0.1em;
-  }
-
   > ul {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
     gap: 3rem;
-    list-style-type: none;
-    padding: 0;
+    margin: 1rem 0;
+
+    > li:deep(.event) > h3,
+    > li:deep(.event) > a {
+      color: var(--primary-500);
+    }
   }
 
   > span {

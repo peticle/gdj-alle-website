@@ -6,3 +6,27 @@
     @include mixins.weighted-color-props($name, $color);
   }
 }
+
+.section-title {
+  font-family: "Bebas Neue", arial, sans-serif;
+  font-size: 3.2em;
+  letter-spacing: 0.1em;
+}
+
+.no-style-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.svg-background {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}

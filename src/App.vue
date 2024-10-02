@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Header } from "@/components";
-import { Home, Planning, Presentation } from "@/views";
+import { Home, News, Planning, Presentation } from "@/views";
 </script>
 
 <template>
@@ -9,6 +9,7 @@ import { Home, Planning, Presentation } from "@/views";
     <Home />
     <Presentation />
     <Planning />
+    <News />
   </main>
 </template>
 

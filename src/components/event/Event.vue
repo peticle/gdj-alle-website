@@ -7,10 +7,10 @@ const props = defineProps<EventProps>();
 
 <template>
   <div class="event">
-    <div class="event-date">
+    <div v-if="props.data.date" class="event-date">
       <span>{{ props.data.date }}</span>
     </div>
-    <div class="event-image">
+    <div v-if="props.data.image" class="event-image">
       <img :src="props.data.image" alt="Picture of the event" />
     </div>
     <h3>{{ props.data.title }}</h3>
@@ -23,6 +23,7 @@ const props = defineProps<EventProps>();
 $event--radius: 4px;
 
 div.event {
+  color: var(--black-500);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -56,7 +57,6 @@ div.event {
   }
 
   > h3 {
-    color: var(--primary-500);
     font-family: "Bebas Neue", arial, sans-serif;
     font-size: 1.6em;
     margin: 0.6rem 0 0;
@@ -66,12 +66,13 @@ div.event {
 
   > p {
     font-size: 1em;
+    font-weight: 300;
     text-align: justify;
   }
 
   > a {
-    color: var(--primary-500);
     font-size: 1.2em;
+    font-weight: 400;
   }
 }
 </style>

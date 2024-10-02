@@ -21,7 +21,7 @@ import { Statistic } from "@/components";
         </Statistic>
         <Statistic :reversed="true">
           <template #default>2009</template>
-          <template #label>Un group actif depuis</template>
+          <template #label>Un groupe actif depuis</template>
         </Statistic>
       </div>
     </div>
@@ -90,6 +90,7 @@ import { Statistic } from "@/components";
   > p {
     color: var(--white-500);
     font-size: 1.1em;
+    font-weight: 300;
     max-width: 500px;
     text-align: justify;
   }
