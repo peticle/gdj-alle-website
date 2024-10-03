@@ -78,10 +78,10 @@ onMounted(() => {
 
     <svg ref="background" viewBox="0 0 100 200" preserveAspectRatio="none">
       <defs>
-        <radialGradient id="nav-gradient" cx="0.5" cy="0.5" r="1">
-          <stop offset="0%" />
+        <linearGradient id="nav-gradient" gradientTransform="rotate(90)">
+          <stop offset="50%" />
           <stop offset="100%" />
-        </radialGradient>
+        </linearGradient>
       </defs>
       <circle cx="100" cy="0" r="1" fill="url(#nav-gradient)" />
     </svg>
@@ -96,6 +96,7 @@ nav {
   height: 100dvh;
   justify-content: space-evenly;
   padding: 15vh 0;
+  transition: height 0.2s;
   width: 100%;
   z-index: 1;
 
@@ -127,8 +128,9 @@ nav {
       &:first-of-type {
         stop-color: var(--primary-500);
       }
+
       &:last-of-type {
-        stop-color: var(--primary-700);
+        stop-color: #ef0325;
       }
     }
   }

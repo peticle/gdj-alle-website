@@ -122,7 +122,7 @@ onMounted(() => {
   flex-direction: column;
   height: 100dvh;
   position: relative;
-  transition: height 0.1s;
+  transition: height 0.2s;
 
   > h2,
   p {

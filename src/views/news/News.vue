@@ -29,10 +29,17 @@ const events: EventData[] = [
       preserveAspectRatio="none"
       class="svg-background"
     >
+      <defs>
+        <linearGradient id="news-gradient" gradientTransform="rotate(90)">
+          <stop offset="60%" />
+          <stop offset="100%" />
+        </linearGradient>
+      </defs>
       <rect x="0" y="0" width="100" height="100" />
-      <rect x="0" y="100" width="100" height="100" />
+      <rect x="0" y="110" width="100" height="100" />
       <path
         d="M77.677734.00390625C61.960855-.16027459 55.901034 6.0437175 40.814453 8.6542969 25.241205 11.349109 14.664245 4.9452569 0 12v176s3.8824931 11.35658 20.769531 11.96094c.527715.019 1.04571.02985 1.552735.03515 15.716879.16419 21.7767-6.03981 36.863281-8.65039C74.758795 188.65089 85.335755 195.05474 100 188V12S96.117507.6434229 79.230469.0390625c-.527715-.01898998-1.04571-.02982626-1.552735-.03515625z"
+        fill="url(#news-gradient)"
       />
     </svg>
   </section>
@@ -44,7 +51,7 @@ const events: EventData[] = [
 }
 
 #news-content {
-  padding: 10vh 2em;
+  padding: 14vh 2em;
 
   > h2 {
     color: var(--white-500);
@@ -75,8 +82,14 @@ const events: EventData[] = [
     fill: var(--black-600);
   }
 
-  > path {
-    fill: var(--primary-500);
+  > defs > #news-gradient > stop {
+    &:first-of-type {
+      stop-color: #ef0325;
+    }
+
+    &:last-of-type {
+      stop-color: var(--primary-500);
+    }
   }
 }
 </style>

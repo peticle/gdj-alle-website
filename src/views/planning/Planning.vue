@@ -35,7 +35,7 @@ onMounted(() => {
 <style scoped lang="scss">
 #planning {
   background: var(--white-500);
-  padding: 2em;
+  padding: 10vh 2em;
 
   > ul {
     gap: 3rem;

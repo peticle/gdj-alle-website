@@ -5,9 +5,8 @@ import { Statistic } from "@/components";
 
 <template>
   <section id="presentation">
-    <h2>Présentation</h2>
-    <h3>Qui sommes-nous ?</h3>
     <div id="presentation-content">
+      <h2 class="section-title">Qui sommes-nous ?</h2>
       <img :src="members" alt="A picture of the members" />
       <p>
         Notre objectif, la sociabilisation des jeunes du village. Pour ce faire,
@@ -29,26 +28,27 @@ import { Statistic } from "@/components";
       id="presentation-background"
       viewBox="0 0 200 100"
       preserveAspectRatio="xMidYMax slice"
+      class="svg-background"
     >
       <defs>
         <mask id="presentation-mask">
-          <circle cx="100" cy="0" r="12" fill="white" />
-          <ellipse cx="100" cy="55" rx="250" ry="38" fill="white" />
-          <text fill="black" x="80" y="30">QUI SOMMES-NOUS ?</text>
+          <ellipse cx="100" cy="0" rx="400" ry="100" fill="white" />
         </mask>
-        <radialGradient id="presentation-gradient" cx="0.5" cy="0.5" r="1">
-          <stop offset="0%" />
+        <linearGradient
+          id="presentation-gradient"
+          gradientTransform="rotate(90)"
+        >
+          <stop offset="60%" />
           <stop offset="100%" />
-        </radialGradient>
+        </linearGradient>
       </defs>
       <rect x="0" y="0" width="200" height="100" />
-      <rect
-        x="0"
-        y="0"
-        width="200"
-        height="100"
+      <ellipse
+        cx="100"
+        cy="0"
+        rx="400"
+        ry="100"
         fill="url(#presentation-gradient)"
-        mask="url(#presentation-mask)"
       />
     </svg>
   </section>
@@ -59,26 +59,16 @@ import { Statistic } from "@/components";
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
   position: relative;
-  transition: height 0.1s;
-
-  > h2,
-  > h3 {
-    display: none;
-  }
 }
 
 #presentation-content {
   align-items: center;
+  color: var(--white-500);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 720px;
-  padding: 2em;
-  position: absolute;
-  top: 32dvh;
-  width: 100%;
+  padding: 10vh 2em;
 
   > img {
     background: none;
@@ -88,7 +78,6 @@ import { Statistic } from "@/components";
   }
 
   > p {
-    color: var(--white-500);
     font-size: 1.1em;
     font-weight: 300;
     max-width: 500px;
@@ -125,11 +114,11 @@ import { Statistic } from "@/components";
 
   > defs > #presentation-gradient > stop {
     &:first-of-type {
-      stop-color: var(--primary-500);
+      stop-color: #ef0325;
     }
 
     &:last-of-type {
-      stop-color: var(--primary-600);
+      stop-color: var(--primary-500);
     }
   }
 }
