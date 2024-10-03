@@ -11,6 +11,7 @@
   font-family: "Bebas Neue", arial, sans-serif;
   font-size: 3.2em;
   letter-spacing: 0.1em;
+  line-height: 1.1em;
 }
 
 .no-style-list {
@@ -20,6 +21,11 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .svg-background {

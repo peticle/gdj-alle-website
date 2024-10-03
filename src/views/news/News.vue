@@ -72,7 +72,7 @@ const events: EventData[] = [
   }
 
   > rect:last-of-type {
-    fill: var(--black-500);
+    fill: var(--black-600);
   }
 
   > path {

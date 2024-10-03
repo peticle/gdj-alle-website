@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import { Home, News, Planning, Presentation } from "@/views";
 </script>
 
@@ -10,6 +10,7 @@ import { Home, News, Planning, Presentation } from "@/views";
     <Presentation />
     <Planning />
     <News />
+    <Footer />
   </main>
 </template>
 
