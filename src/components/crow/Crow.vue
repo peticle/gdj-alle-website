@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Object3D } from "three";
 import { onMounted, useTemplateRef } from "vue";
-import { vWindowResize } from "@/utils";
+import { vResizeObserver } from "@vueuse/components";
 import { CrowScene } from "./crow";
 
 // Exposes
@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-window-resize="resizeScene" ref="scene" class="crow"></div>
+  <div v-resize-observer="resizeScene" ref="scene" class="crow"></div>
 </template>
 
 <style lang="scss" scoped></style>

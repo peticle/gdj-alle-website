@@ -1,9 +1,60 @@
-﻿<script setup lang="ts" xmlns:h2j="http://www.w3.org/1999/html"></script>
+﻿<script setup lang="ts">
+import anime from "animejs/lib/anime.es";
+import { onMounted, useTemplateRef } from "vue";
+import { vElementVisibility } from "@vueuse/components";
+import { Title } from "@/components";
+
+const timeline = anime.timeline({
+  autoplay: false,
+  duration: 1000,
+  easing: "easeInOutExpo",
+});
+
+// Template refs
+const title = useTemplateRef<typeof Title>("title");
+const halloween = useTemplateRef<HTMLElement>("halloween");
+const contact = useTemplateRef<HTMLElement>("contact");
+const socials = useTemplateRef<HTMLElement>("socials");
+
+/**
+ * Shows the section if it's visible.
+ *
+ * @param isVisible If the section is visible.
+ */
+function showIfVisible(isVisible: boolean) {
+  if (isVisible && !timeline.began) {
+    timeline.play();
+  }
+}
+
+// Lifecycle hooks
+onMounted(() => {
+  timeline.add({
+    begin: () => {
+      title.value.show();
+    },
+  });
+  timeline.add({
+    targets: [halloween.value, contact.value, socials.value],
+    opacity: 1,
+    translateY: [-3, 0],
+    delay: anime.stagger(500),
+  });
+});
+</script>
 
 <template>
   <section id="contact" class="flex-column">
-    <h2 class="section-title">Nous contacter</h2>
-    <div id="contact-halloween" class="flex-column">
+    <h2>Nous contacter</h2>
+    <Title
+      v-element-visibility="showIfVisible"
+      ref="title"
+      viewBox="0 0 340 100"
+    >
+      <tspan x="0" y="40">NOUS</tspan>
+      <tspan x="0" y="90">CONTACTER</tspan>
+    </Title>
+    <div ref="halloween" id="contact-halloween" class="flex-column">
       <strong>Nous soutenir</strong>
       <a
         href="https://1drv.ms/b/s!AjLNjoQbJj96kXj_woWvlYPZOf2A?e=4r9813"
@@ -11,7 +62,7 @@
         >Sponsor Halloween 2024 &gt;</a
       >
     </div>
-    <div id="contact-contact" class="flex-column">
+    <div ref="contact" id="contact-contact" class="flex-column">
       <strong>Nous contacter</strong>
       <span>Groupe des jeunes Alle</span>
       <span>Chemin central 4</span>
@@ -20,7 +71,7 @@
         >contact@gdj-alle.ch</a
       >
     </div>
-    <div id="contact-socials" class="flex-column">
+    <div ref="socials" id="contact-socials" class="flex-column">
       <strong>Nos réseaux sociaux</strong>
       <div>
         <a
@@ -61,11 +112,12 @@
   }
 
   > h2 {
-    max-width: 6em;
+    display: none;
   }
 
   > div {
     font-size: 1.1em;
+    opacity: 0;
 
     > strong {
       font-weight: 300;

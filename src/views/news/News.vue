@@ -1,6 +1,15 @@
 ﻿<script setup lang="ts">
-import { Event, EventData } from "@/components";
+import anime from "animejs/lib/anime.es";
+import { onMounted, useTemplateRef } from "vue";
+import { vElementVisibility } from "@vueuse/components";
+import { Event, EventData, Title } from "@/components";
 import committee from "@/assets/committee.webp";
+
+const timeline = anime.timeline({
+  autoplay: false,
+  duration: 1000,
+  easing: "easeInOutExpo",
+});
 
 const events: EventData[] = [
   {
@@ -9,13 +18,55 @@ const events: EventData[] = [
       "Cette année, l'entièreté du comité est revoté lors de l'habituelle assemblée générale du groupe des jeunes.",
     image: committee,
   },
+  {
+    title: "Réélection du comité",
+    summary:
+      "Cette année, l'entièreté du comité est revoté lors de l'habituelle assemblée générale du groupe des jeunes.",
+    image: committee,
+  },
 ];
+
+// Template refs
+const title = useTemplateRef<typeof Title>("title");
+
+/**
+ * Shows the section if it's visible.
+ *
+ * @param isVisible If the section is visible.
+ */
+function showIfVisible(isVisible: boolean) {
+  if (isVisible && !timeline.began) {
+    timeline.play();
+  }
+}
+
+// Lifecycle hooks
+onMounted(() => {
+  timeline.add({
+    begin: () => {
+      title.value?.show();
+    },
+  });
+  timeline.add({
+    targets: "#news li",
+    opacity: 1,
+    translateY: [-5, 0],
+    delay: anime.stagger(500),
+  });
+});
 </script>
 
 <template>
   <section id="news">
     <div id="news-content">
-      <h2 class="section-title">Actualités</h2>
+      <h2>Actualités</h2>
+      <Title
+        v-element-visibility="showIfVisible"
+        ref="title"
+        viewBox="0 0 340 100"
+      >
+        <tspan x="0" y="40">Actualités</tspan>
+      </Title>
       <ul v-if="events.length > 0" class="no-style-list">
         <li v-for="(event, i) in events" :key="i">
           <Event :data="event" />
@@ -54,17 +105,21 @@ const events: EventData[] = [
   padding: 14vh 2em;
 
   > h2 {
-    color: var(--white-500);
+    display: none;
   }
 
   > ul {
     gap: 3rem;
     margin: 1rem 0;
 
-    > li:deep(.event) > h3,
-    > li:deep(.event) > p,
-    > li:deep(.event) > a {
-      color: var(--white-500);
+    > li {
+      opacity: 0;
+
+      &:deep(.event) > h3,
+      &:deep(.event) > p,
+      &:deep(.event) > a {
+        color: var(--white-500);
+      }
     }
   }
 

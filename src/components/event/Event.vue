@@ -6,7 +6,7 @@ const props = defineProps<EventProps>();
 </script>
 
 <template>
-  <div class="event">
+  <div ref="event" class="event">
     <div v-if="props.data.date" class="event-date">
       <span>{{ props.data.date }}</span>
     </div>
@@ -15,7 +15,7 @@ const props = defineProps<EventProps>();
     </div>
     <h3>{{ props.data.title }}</h3>
     <p>{{ props.data.summary }}</p>
-    <a href="#">&gt; Lire la suite</a>
+    <a>&gt; Lire la suite</a>
   </div>
 </template>
 
@@ -59,9 +59,9 @@ div.event {
   > h3 {
     font-family: "Bebas Neue", arial, sans-serif;
     font-size: 1.6em;
+    letter-spacing: 0.1em;
     margin: 0.6rem 0 0;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
   }
 
   > p {

@@ -18,6 +18,8 @@
     ]
   },
   "dependencies": {
+    "@vueuse/components": "^11.1.0",
+    "@vueuse/core": "^11.1.0",
     "animejs": "^3.2.2",
     "sanitize.css": "^10.0.0",
     "three": "^0.168.0",
