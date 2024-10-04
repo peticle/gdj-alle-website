@@ -1,16 +1,12 @@
 <script setup lang="ts">
+import { RouterView } from "vue-router";
 import { Footer, Header } from "@/components";
-import { Contact, Home, News, Planning, Presentation } from "@/views";
 </script>
 
 <template>
   <Header />
   <main>
-    <Home />
-    <Presentation />
-    <Planning />
-    <News />
-    <Contact />
+    <RouterView />
   </main>
   <Footer />
 </template>

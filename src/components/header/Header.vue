@@ -19,7 +19,7 @@ function toggle() {
   <header>
     <h1>Groupe des jeunes Alle</h1>
     <NavButton ref="button" @click.prevent="toggle" />
-    <Navigation ref="navigation" />
+    <Navigation @backHome="toggle" ref="navigation" />
   </header>
 </template>
 

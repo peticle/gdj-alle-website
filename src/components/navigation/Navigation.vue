@@ -18,6 +18,9 @@ function toggle() {
   toggleTimeline(timeline);
 }
 
+// Emits
+const emit = defineEmits(["backHome"]);
+
 // Exposes
 defineExpose({
   toggle,
@@ -66,15 +69,32 @@ onMounted(() => {
 
 <template>
   <nav ref="navigation">
-    <RouterLink to="/">Accueil</RouterLink>
+    <RouterLink @click="emit('backHome')" to="#home">Accueil</RouterLink>
     <div></div>
-    <RouterLink to="/">À propos</RouterLink>
+    <RouterLink
+      @click="emit('backHome')"
+      to="#presentation"
+      title="Voir la présentation du groupe"
+      >À propos</RouterLink
+    >
     <div></div>
-    <RouterLink to="/">Agenda</RouterLink>
+    <RouterLink
+      @click="emit('backHome')"
+      to="#planning"
+      title="Voir notre agenda"
+      >Agenda</RouterLink
+    >
     <div></div>
-    <RouterLink to="/">Actualités</RouterLink>
+    <RouterLink @click="emit('backHome')" to="#news" title="Voir les actualités"
+      >Actualités</RouterLink
+    >
     <div></div>
-    <RouterLink to="/">Contacts</RouterLink>
+    <RouterLink
+      @click="emit('backHome')"
+      to="#contact"
+      title="Voir les façons de nous contacter"
+      >Contacts</RouterLink
+    >
 
     <svg ref="background" viewBox="0 0 100 200" preserveAspectRatio="none">
       <defs>

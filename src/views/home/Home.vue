@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import anime from "animejs/lib/anime.es.js";
 import { onMounted, useTemplateRef } from "vue";
+import { RouterLink } from "vue-router";
 import { Crow } from "@/components";
+import { Contact } from "./contact";
+import { News } from "./news";
+import { Planning } from "./planning";
+import { Presentation } from "./presentation";
 
 const timeline = anime.timeline({
   duration: 2000,
@@ -101,7 +106,11 @@ onMounted(() => {
         <tspan x="100" y="73.5">depuis 2009</tspan>
       </text>
     </svg>
-    <a id="home-scroll" href="#">
+    <RouterLink
+      id="home-scroll"
+      to="#presentation"
+      title="Voir la présentation du groupe"
+    >
       <svg ref="scroll" viewBox="0 0 26.46 26.46">
         <path
           fill="none"
@@ -111,8 +120,12 @@ onMounted(() => {
           d="m5.15 9.15 8.16 8.16 8-8"
         />
       </svg>
-    </a>
+    </RouterLink>
   </section>
+  <Presentation />
+  <Planning />
+  <News />
+  <Contact />
 </template>
 
 <style lang="scss" scoped>
