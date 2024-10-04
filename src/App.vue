@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Footer, Header } from "@/components";
-import { Home, News, Planning, Presentation } from "@/views";
+import { Contact, Home, News, Planning, Presentation } from "@/views";
 </script>
 
 <template>
@@ -10,8 +10,9 @@ import { Home, News, Planning, Presentation } from "@/views";
     <Presentation />
     <Planning />
     <News />
-    <Footer />
+    <Contact />
   </main>
+  <Footer />
 </template>
 
 <style lang="scss" scoped>
