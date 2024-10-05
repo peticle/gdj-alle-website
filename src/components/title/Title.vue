@@ -55,6 +55,8 @@ onMounted(() => {
 
 <style scoped lang="scss">
 svg.title {
+  max-width: 500px;
+
   > text {
     display: flex;
     font-family: "Bebas Neue", arial, sans-serif;

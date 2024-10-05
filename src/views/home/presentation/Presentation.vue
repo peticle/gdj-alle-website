@@ -61,31 +61,35 @@ onMounted(() => {
 
 <template>
   <section id="presentation">
-    <div id="presentation-content">
+    <div id="presentation-content" class="flex-column">
       <h2>Qui sommes-nous ?</h2>
-      <Title ref="title" viewBox="0 0 340 100">
+      <Title ref="title" viewBox="0 0 372 100">
         <tspan x="0" y="40">Qui sommes-nous ?</tspan>
       </Title>
-      <img
-        v-element-visibility="showIfVisible"
-        ref="members-img"
-        :src="members"
-        alt="A picture of the members"
-      />
-      <p ref="description">
-        Notre objectif, la sociabilisation des jeunes du village. Pour ce faire,
-        nous organisations divers sorties et voyages. Le tout financé par les
-        événements organisés par notre société.
-      </p>
-      <div id="presentation-stats">
-        <Statistic ref="members-stat">
-          <template #default>81</template>
-          <template #label>Membres</template>
-        </Statistic>
-        <Statistic ref="year-stat" :reversed="true">
-          <template #default>2009</template>
-          <template #label>Un groupe actif depuis</template>
-        </Statistic>
+      <div class="flex-column">
+        <img
+          v-element-visibility="showIfVisible"
+          ref="members-img"
+          :src="members"
+          alt="A picture of the members"
+        />
+        <div id="presentation-infos" class="flex-column">
+          <p ref="description">
+            Notre objectif, la sociabilisation des jeunes du village. Pour ce
+            faire, nous organisations divers sorties et voyages. Le tout financé
+            par les événements organisés par notre société.
+          </p>
+          <div id="presentation-stats">
+            <Statistic ref="members-stat">
+              <template #default>81</template>
+              <template #label>Membres</template>
+            </Statistic>
+            <Statistic ref="year-stat" :reversed="true">
+              <template #default>2009</template>
+              <template #label>Un groupe actif depuis</template>
+            </Statistic>
+          </div>
+        </div>
       </div>
     </div>
     <svg
@@ -129,8 +133,6 @@ onMounted(() => {
 #presentation-content {
   align-items: center;
   color: var(--white-500);
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
   padding: 10vh 2em;
 
@@ -138,12 +140,22 @@ onMounted(() => {
     display: none;
   }
 
-  > img {
-    background: none;
-    filter: grayscale(1);
-    margin: 0 auto;
-    width: 100%;
+  > div {
+    gap: 1rem;
+
+    > img {
+      background: none;
+      filter: grayscale(1);
+      margin: 0 auto;
+      max-width: 1000px;
+      width: 100%;
+    }
   }
+}
+
+#presentation-infos {
+  align-items: center;
+  gap: 1rem;
 
   > p {
     font-size: 1.1em;
@@ -151,13 +163,13 @@ onMounted(() => {
     max-width: 500px;
     text-align: justify;
   }
+}
 
-  #presentation-stats {
-    display: flex;
-    justify-content: space-between;
-    max-width: 300px;
-    width: 100%;
-  }
+#presentation-stats {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  width: 100%;
 }
 
 #presentation-background {
@@ -182,12 +194,31 @@ onMounted(() => {
 
   > defs > #presentation-gradient > stop {
     &:first-of-type {
-      stop-color: #ef0325;
+      stop-color: var(--primary-600);
     }
 
     &:last-of-type {
       stop-color: var(--primary-500);
     }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  #presentation-content > div {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  #presentation-infos {
+    gap: 2rem;
+
+    > p {
+      font-size: 1.6em;
+    }
+  }
+
+  #presentation-stats {
+    font-size: 1.1em;
   }
 }
 </style>

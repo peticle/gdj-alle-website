@@ -73,7 +73,7 @@ onMounted(() => {
     >
       <tspan x="0" y="40">Agenda</tspan>
     </Title>
-    <ul v-if="events.length > 0" class="no-style-list">
+    <ul v-if="events.length > 0" class="no-style-list flex-column">
       <li v-for="(event, i) in events" :key="i">
         <Event :data="event" />
       </li>
@@ -85,7 +85,7 @@ onMounted(() => {
 <style scoped lang="scss">
 #planning {
   background: var(--white-500);
-  padding: 10vh 2em;
+  padding: 6em 2em;
 
   > h2 {
     display: none;
@@ -117,6 +117,18 @@ onMounted(() => {
 
   > span {
     font-size: 1.4em;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  #planning > ul {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #planning {
+    padding: 6em;
   }
 }
 </style>

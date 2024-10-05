@@ -82,7 +82,7 @@ onMounted(() => {
     >
       <defs>
         <linearGradient id="news-gradient" gradientTransform="rotate(90)">
-          <stop offset="60%" />
+          <stop offset="20%" />
           <stop offset="100%" />
         </linearGradient>
       </defs>
@@ -102,7 +102,7 @@ onMounted(() => {
 }
 
 #news-content {
-  padding: 14vh 2em;
+  padding: 8em 2em;
 
   > h2 {
     display: none;
@@ -139,12 +139,24 @@ onMounted(() => {
 
   > defs > #news-gradient > stop {
     &:first-of-type {
-      stop-color: #ef0325;
+      stop-color: var(--primary-500);
     }
 
     &:last-of-type {
-      stop-color: var(--primary-500);
+      stop-color: var(--primary-600);
     }
+  }
+}
+
+@media screen and (min-width: 720px) {
+  #news-content > ul {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #news-content {
+    padding: 8em 6em;
   }
 }
 </style>

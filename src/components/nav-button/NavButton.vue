@@ -69,4 +69,10 @@ svg.nav-button > g > rect {
   fill: var(--white-500);
   transform-origin: center center;
 }
+
+@media screen and (min-width: 1024px) {
+  svg.nav-button {
+    display: none;
+  }
+}
 </style>

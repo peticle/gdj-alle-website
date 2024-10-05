@@ -15,7 +15,7 @@ const props = defineProps<EventProps>();
     </div>
     <h3>{{ props.data.title }}</h3>
     <p>{{ props.data.summary }}</p>
-    <a>&gt; Lire la suite</a>
+    <a href="#" title="Voir l'événement">&gt; Lire la suite</a>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ div.event {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  max-width: 600px;
   position: relative;
 
   > div.event-date {
@@ -73,6 +74,12 @@ div.event {
   > a {
     font-size: 1.2em;
     font-weight: 400;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  div.event {
+    font-size: 1.2em;
   }
 }
 </style>
